@@ -1,0 +1,27 @@
+body img {
+	border: 2px solid #ccc;
+}
+
+#switcher {
+	width: 50%;
+	margin: 0 auto;
+}
+
+#mainImg {
+	width: 100%;
+}
+
+#mainImg img {
+	width: 100%;
+	margin-bottom: 10px;
+}
+
+#thumbContainer {
+}
+
+img.thumb {
+	float: left;
+	margin-right: 10px;
+	width: 200px;
+	height: 120px;
+}

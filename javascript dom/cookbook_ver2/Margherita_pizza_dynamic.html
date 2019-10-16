@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>LTU Cookbook</title>
+  </head>
+  <body>
+    <h1>LTU <em>Cookbook</em></h1>
+    <p>A web based cookbook for LTU students</p>
+    <ul>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="Top_rated_recipes.html">Top rated recipes</a></li>
+      <li><a href="Recipes_by_country.html">Recipes by country</a></li>
+      <li><a href="Vegan_Vegatarian.html">Vegan/Vegatarian options</a></li>
+      <li><a href="New_recipe.html">Add a recipe</a></li>
+      <li><a href="rate_a_recipe.html">Rate a recipe</a></li>
+      <li><a href="Full_recipe_list.html">Full recipe list</a></li>
+      <li>Search for recipes<form method = "GET" action="#">
+        <input type="text" name="keywords" placeholder="Search by keyword">
+        <button type="submit" name="submit" >submit</button>
+      </li>
+    </ul>
+
+      <div id = "recipe_title">
+      </div>
+      <div id = "author">
+      </div>
+      <div id = "photo">
+      </div>
+      <h3>Ingriedients</h3>
+      <ul = id = "ingriedients">
+      </ul>
+      <h3>Method</h3>
+      <ol id = "method">
+      </ol>
+
+
+      <script src="data/recipeData.js"></script>
+      <script src="js/recipe_logic.js"></script>
+
+
+  </body>
+</html>
