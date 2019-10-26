@@ -1,0 +1,4 @@
+{   "name" : "marghertita pizza",
+    "ingriedients" : [ "flour", "water", "tinned tomatoes", "garlic"],
+    "method" : ["prepare","bake"]
+}

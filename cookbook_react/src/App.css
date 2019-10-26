@@ -1,0 +1,36 @@
+.App {
+  text-align: center;
+}
+.flexbox-container{
+  display: flex;
+  justify-content: space-around;
+  align-content: flex-start;
+  flex-wrap: wrap;
+
+}
+.flexbox-item{
+  width: 300px;
+  margin: 10px;
+
+  max-height: 300px;
+  background-color: rgb(247, 7, 7);
+  min-height: 300px;
+  border-radius: 5px;
+
+
+
+}
+body{
+  color: black;
+  font-size: 16px;
+  
+  background-color: #cccccc;
+  font-family: 'Graduate', cursive;
+  }
+.this_week{
+  text-align: center;
+  font-size: 150%;
+  color: white;
+  text-emphasis-color: white;
+}
+
