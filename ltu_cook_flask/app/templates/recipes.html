@@ -1,0 +1,24 @@
+{% extends 'layout.html' %}
+{% block content %}
+    <p></p>
+    <h4>Recipe list</h4>
+{% for obj in data %}
+
+
+<article class="media content-section">
+    <div class="media-body">
+        <div class="article-metadata">
+            <a class="mr-2" href="#">{{ obj['chef'] }}</a>
+            <small class="text-muted">{{obj['tags']}}</small>
+
+        </div>
+        <h4><a class="article-title" href="#">{{ obj['title']}}</a></h4>
+        <img src="{{ url_for('static', filename='images/' + obj['image_url']) }}" alt="apple pie" width="300">
+        <p class="article-content">{{ obj['ingredients'] }}</p>
+        <p class="article-content">{{ obj['instructions'] }}</p>
+    </div>
+</article>
+{% endfor %}
+{% endblock content %}
+
+

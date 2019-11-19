@@ -1,0 +1,29 @@
+{% extends 'layout_after_login.html' %}
+{% block content %}
+<p></p>
+<h4>Welcome back {{ data['username'] }}</h4>
+<p>Your recipes</p>
+<small>Member since {{data['member_since']}}</small>
+<p></p>
+{% for recipe in recipe_data %}
+    {% if data['fullname'] == recipe['chef'] %}
+        <article class="media content-section">
+            <div class="media-body">
+                <div class="article-metadata">
+                    <a class="mr-2" href="#">{{ recipe['chef'] }}</a>
+                    <small class="text-muted">{{recipe['tags']}}</small>
+
+                </div>
+                <h4><a class="article-title" href="#">{{ recipe['title']}}</a></h4>
+                <img src="{{ url_for('static', filename='images/' + recipe['image_url']) }}" alt="apple pie" width="300">
+                <p class="article-content">{{ recipe['ingredients'] }}</p>
+                <p class="article-content">{{ recipe['instructions'] }}</p>
+            </div>
+        </article>
+    
+    {% endif %}
+{% endfor %}
+
+
+
+{% endblock content %}
