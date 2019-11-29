@@ -1,0 +1,24 @@
+{% extends 'layout.html' %}
+{% block content %}
+
+<div>Welcome to LTU tech careers browse the latest jobs below.</div>
+<p></p>
+
+    {% for obj in data %}
+
+<article class="media content-section">
+    <div class="media-body">
+        <div class="article-metadata">
+            <a class="mr-2" href="{{url_for('job_page')}}">{{ obj['title'] }}</a>
+            <small class="text-muted">{{obj['tags']}}</small>
+
+        </div>
+        <h4><a class="article-title" href="{{url_for('job_page')}}">{{ obj['title']}}</a></h4>
+        <p class="article-content">{{ obj['description'] }}</p>
+
+    </div>
+</article>
+    {% endfor %}
+{% endblock content %}
+
+

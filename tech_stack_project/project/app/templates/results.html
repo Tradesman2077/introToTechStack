@@ -1,0 +1,18 @@
+{% extends 'layout.html' %}
+{% block content %}
+<p></p>
+
+{% for obj in results %}
+<article class="media content-section">
+    <div class="media-body">
+        <p>{{obj['title']}}</p>
+        <p>{{obj['tags']}}</p>
+        <p>{{obj['description']}}</p>
+
+
+    </div>
+</article>
+{% endfor %}
+{% endblock content %}
+
+
