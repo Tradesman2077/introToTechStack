@@ -1,8 +1,11 @@
-{% extends 'layout.html' %}
+﻿{% extends 'layout_after_login.html' %}
 {% block content %}
+
+<div>Welcome to LTU tech careers browse the latest jobs below that were matched with your skills.</div>
 <p></p>
 
-{% for obj in results %}
+    {% for obj in data %}
+    
 <article class="media content-section" style="background-color: rgba(255,255,255,0.95);">
     <div class="media-body">
         <div class="article-metadata">
@@ -15,7 +18,8 @@
 
     </div>
 </article>
-{% endfor %}
+    {% endfor %}
 {% endblock content %}
+
 
 

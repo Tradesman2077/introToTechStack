@@ -1,24 +1,24 @@
 {% extends 'layout.html' %}
 {% block content %}
-    <div class="content-section">
+    <div class="content-section" style="background-color: rgba(255,255,255,0.95);">
         <p></p>
         <p></p>
         <form method="POST" action="">
             {{ form.hidden_tag() }}
             <fieldset class="form-group">
-                <legend class ="border-bottom mb-4">Sign up</legend>
+                <legend class="border-bottom mb-4">Sign up</legend>
                 <div class="form-group">
                     {{form.username.label(class = "form-control-label")}}
 
                     {% if form.username.errors %}
-                        {{form.username(class = "form-control form-control-lg is-invalid")}}
-                        <div class="invalid-feedback">
-                            {% for error in form.username.errors %}
-                                <span>{{ error }}</span>
-                            {% endfor %}
-                        </div>
+                    {{form.username(class = "form-control form-control-lg is-invalid")}}
+                    <div class="invalid-feedback">
+                        {% for error in form.username.errors %}
+                        <span>{{ error }}</span>
+                        {% endfor %}
+                    </div>
                     {% else %}
-                        {{form.username(class = "form-control form-control-lg")}}
+                    {{form.username(class = "form-control form-control-lg")}}
                     {% endif %}
                 </div>
 
@@ -64,16 +64,33 @@
                     {% endif %}
                 </div>
 
+                <div class="form-group">
+                    {{form.skills.label(class = "form-control-label")}}
+                    {% if form.skills.errors %}
+                    {{form.skills(class = "form-control form-control-lg is-invalid")}}
+                    <div class="invalid-feedback">
+                        {% for error in form.skills.errors %}
+                        <span>{{ error }}</span>
+                        {% endfor %}
+                    </div>
+                    {% else %}
+                    {{form.skills(class = "form-control form-control-lg")}}
+                    {% endif %}
+                </div>
+
             </fieldset>
             <div class="form-group">
                 {{form.submit(class = "btn btn-outline-info")}}
             </div>
+            <small class="text-mute">
+                Already have an account? <a class="ml-2" href="{{url_for('login')}}">Sign In</a>
+            </small>
         </form>
 
     </div>
 <div class="border-top pt-3">
     <small class="text-mute">
-        Already have an account? <a class="ml-2" href="{{url_for('login')}}">Sign In</a>
+        
     </small>
 
 </div>

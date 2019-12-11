@@ -6,15 +6,15 @@
 
     {% for obj in data %}
     
-    <article class="media content-section" >
-        <div class="media-body">
+    <article class="media content-section"  style="background-color: rgba(255,255,255,0.95);">
+        <div class="media-body"> 
             <div class="article-metadata">
-                <a class="mr-2" href="{{url_for('job_page')}}">{{ obj['title'] }}</a>
-                <small class="text-muted">{{obj['tags']}}</small>
+                <a class="mr-2" href="{{obj['url']}}">{{ obj['url'] }}</a>
+                <small class="text-muted">{{obj['title']}}</small>
 
             </div>
-            <h4><a class="article-title" href="{{url_for('job_page')}}">{{ obj['title']}}</a></h4>
-            <p class="article-content">{{ obj['description'] }}</p>
+            <h4><a class="article-title" href="{{obj['url']}}">{{ obj['title']}}</a></h4>
+            <p class="article-content">{{ obj['text'] }}</p>
             
         </div>
     </article>

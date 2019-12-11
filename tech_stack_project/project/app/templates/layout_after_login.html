@@ -19,23 +19,24 @@
 </head>
 
 <body>
-    <div class="jumbotron" style="background-image: url('static/city_center.jpg');">
+    <div class="jumbotron " style="background-image: url('static/city_center.jpg');">
         <header class="site-header">
             <nav class="navbar navbar-expand-md navbar-dark bg-steel fixed-top" style="background-color: cadetblue">
-                <div class="container"  >
+                <div class="container" >
                     <a class="navbar-brand mr-4" style="font-size: 1.75em; font-family: Fredoka One, cursive !important" href="/">LTU Tech Careers</a>
                     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggle" aria-controls="navbarToggle" aria-expanded="false" aria-label="Toggle navigation">
                         <span class="navbar-toggler-icon"></span>
                     </button>
                     <div class="collapse navbar-collapse" id="navbarToggle">
                         <div class="navbar-nav mr-auto">
-                            <a class="nav-item nav-link" href={{url_for('home')}}>Home</a>
+                            <a class="nav-item nav-link" href={{url_for('home_after_login')}}>Home</a>
                             <a class="nav-item nav-link" href={{url_for('about')}}>About</a>
+                            
                         </div>
                         <!-- Navbar Right Side -->
                         <div class="navbar-nav">
-                            <a class="nav-item nav-link" href={{url_for('login')}}>Login</a>
-                            <a class="nav-item nav-link" href={{url_for('register')}}>Register</a>
+                            <a class="nav-item nav-link" href={{url_for('saved_jobs')}}>Saved Jobs</a>
+                            
                             <a class="nav-item nav-link" href={{url_for('search')}}>Search</a>
 
                         </div>
@@ -62,7 +63,7 @@
                 </div>
                 <div class="col-md-4">
 
-                    <div class="content-section" padding-top="100px !important" style="background-color: rgba(255,255,255,0.95);">
+                    <div class="content-section" padding-top="100px !important" style="background-color: rgba(255,255,255,0.95);" >
 
                         <h4>News</h4>
                         <p class='text-muted'>
@@ -76,9 +77,12 @@
                     </div>
                 </div>
             </div>
-            
+
            
-        
+        </div>
+    <div>
+        <img href ="static/ trin.jpg"/>
+    </div>
     </main>
         <!-- Optional JavaScript -->
         <!-- jQuery first, then Popper.js, then Bootstrap JS -->

@@ -5,8 +5,8 @@ from wtforms import TextField
 from bson.json_util import dumps
 import json
 from bson import json_util
-
-
+from bson.objectid import ObjectId
+import re
 from wtforms.validators import DataRequired, Length, Email, EqualTo
 
 
@@ -23,9 +23,33 @@ db = client.get_database('tech_careers')
 @app.route('/')
 @app.route('/home')
 def home():
-    _jobs = db.jobs.find()
-    
+    _jobs = db.jobs.find().limit(25)
+ 
+ 
     return render_template("home.html",page_name='Home', data =_jobs)
+
+
+@app.route('/home_after_login')
+def home_after_login():
+    id = request.args['id']
+    data = db.profiles.find_one({'_id': ObjectId(id)}, {'skills'})
+    skill =data['skills']
+    
+    _jobs=  db.jobs.find({"title" : {"$regex": skill.replace(" ", ""), "$options": 'i'}})
+  
+    
+    
+   
+    
+   
+    
+    return render_template("home_after_login.html",page_name='Home after login', data =_jobs)
+
+@app.route('/saved_jobs')
+
+def saved_jobs():
+
+    return render_template('saved_jobs.html', page_name='Saved jobs')
 
 
  
@@ -39,15 +63,14 @@ def job_page():
 
 @app.route('/results')
 def results():
-    data= [i for i in session['results']]   
+    data= [i for i in results]   
     final_list=[]
+    
     for i in data:
         i =0
         obj =json.loads(data[i])
         final_list.append(obj)
         i+=1
-    
-    
     
     
     return render_template("results.html", title = 'Results', results = final_list )
@@ -57,7 +80,7 @@ def results():
 def register():
     form = RegistrationForm()
     if form.validate_on_submit():
-        new_profile = {'username' : form.username.data, 'email' : form.email.data, 'password': form.password.data}
+        new_profile = {'username' : form.username.data, 'email' : form.email.data, 'password': form.password.data, 'skills' : form.skills.data}
         db.profiles.insert_one(new_profile)
         flash(f'Account created for {form.username.data}!', 'success')
         return redirect(url_for('home'))
@@ -72,31 +95,22 @@ def login():
         cursor = db.profiles.find({"email": form.email.data, "password": form.password.data})
         if cursor.count() > 0:
            flash('You have logged in', 'success')
-           return redirect(url_for('home', id=cursor[0]['_id']))
+           
+           return redirect(url_for('home_after_login', id=cursor[0]['_id']))
         else:
             flash('Log in unsuccessful please try again', 'danger')
                 
     return render_template('login.html', title='Login', form=form)
 
-
-
 @app.route('/search', methods=['GET', 'POST'])
 def search():
     form = SearchForm()
     if form.validate_on_submit():
-        cursor = db.jobs.find({"title": {"$regex": form.keyword.data.replace(" ", ""), "$options": 'i'}})
-        if cursor.count() > 0:
-            json_docs = []
-            for doc in cursor:
-                json_doc = json.dumps(doc, default=json_util.default)
-                json_docs.append(json_doc)
-                session['results'] = json_docs   
-            return redirect(url_for('results'))
-        
+        cursor = db.jobs.find({"title" : {"$regex": form.keyword.data.replace(" ", ""), "$options": 'i'}})
+        if cursor.count() > 0:           
+            return render_template('results.html', title='results', results=cursor, form=form)    
         else:
-            flash('No results found', 'danger')
-        
-
+            flash('No results found', 'danger')        
     return render_template('search.html', title='Search', form=form)
 
 

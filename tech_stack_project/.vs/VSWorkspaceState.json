@@ -4,7 +4,8 @@
     "\\project",
     "\\project\\app",
     "\\project\\app\\static",
-    "\\project\\app\\templates"
+    "\\project\\app\\templates",
+    "\\project\\Include"
   ],
   "SelectedNode": "\\project\\app\\app.py",
   "PreviewInSolutionExplorer": false
